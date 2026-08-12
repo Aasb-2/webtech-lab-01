@@ -1,0 +1,348 @@
+/* ============================================
+   Tokens
+   ============================================ */
+:root {
+  --bg: #F7F7F5;
+  --surface: #FFFFFF;
+  --border: #E1E4E1;
+  --text: #16181A;
+  --text-muted: #4B5563;
+  --accent: #2D6A4F;
+  --accent-soft: #E4EFE9;
+
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+
+  --max-width: 1200px;
+}
+
+/* ============================================
+   Reset & base
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden; /* defensive: guards against accidental horizontal scroll */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+h1 { font-size: clamp(1.9rem, 1.2rem + 3vw, 2.75rem); }
+h2 { font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.85rem); }
+h3 { font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.3rem); }
+
+p {
+  margin: 0 0 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   Layout primitive
+   ============================================ */
+.wrap {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+main.wrap {
+  padding-block: 0.5rem;
+}
+
+/* ============================================
+   Header (terminal chrome + Flexbox nav)
+   ============================================ */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding-block: 1.75rem;
+}
+
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-red   { background: #E5484D; }
+.dot-amber { background: #F5A524; }
+.dot-green { background: var(--accent); }
+
+.term-path {
+  margin-left: 0.5rem;
+}
+
+header nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.1rem;
+}
+
+header nav a {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+header nav a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ============================================
+   Sections & eyebrows
+   ============================================ */
+main section {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  border-bottom: 1px solid var(--border);
+}
+
+main section:last-child {
+  border-bottom: none;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+/* ============================================
+   About / figure
+   ============================================ */
+figure {
+  margin: 1.5rem 0 0;
+  max-width: 240px;
+}
+
+figure img {
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   Skills table
+   ============================================ */
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: clamp(0.85rem, 0.7rem + 0.6vw, 1rem);
+}
+
+thead th:first-child,
+tbody th[scope="row"] {
+  width: 32%;
+  min-width: 9rem;
+}
+
+caption {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+th, td {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+  border-bottom: 1px solid var(--border);
+}
+
+thead th {
+  background: var(--accent-soft);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+tbody th[scope="row"] {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================
+   Projects — Grid container
+   ============================================ */
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+#projects h2,
+#projects .eyebrow {
+  grid-column: 1 / -1; /* heading spans full width above the grid cards */
+}
+
+article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+article h3 {
+  margin-top: 0;
+}
+
+article p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   Contact form
+   ============================================ */
+#contact form {
+  max-width: 520px;
+  margin-top: 1.5rem;
+}
+
+#contact form > div {
+  margin-bottom: 1.1rem;
+}
+
+label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+input, textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  font-family: var(--font-mono);
+  background: var(--accent);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+button[type="submit"]:hover {
+  background: #245A41;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-block: 2rem;
+}
+
+address {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+address a {
+  color: var(--accent);
+}
+
+address p {
+  margin: 0;
+}
+
+/* ============================================
+   Accessibility: visible focus
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

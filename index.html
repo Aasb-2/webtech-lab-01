@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agustín Álvarez</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<header class="site-header">
+  <div class="wrap">
+    <div class="term-bar" aria-hidden="true">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-amber"></span>
+      <span class="dot dot-green"></span>
+      <span class="term-path">visitor@web:~$ cat about.md</span>
+    </div>
+    <h1>Agustín Álvarez</h1>
+    <p>
+      <span lang="es">Ingeniería Civil en Ciencias de la Computación</span>
+      (Computer Science Engineering) — Universidad de los Andes,
+      admitted <time datetime="2022">2022</time>
+    </p>
+    <nav aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="wrap">
+
+    <section id="about">
+      <span class="eyebrow" aria-hidden="true">// about</span>
+      <h2>About Me</h2>
+      <p>
+        Hello! My name is Agustín, born in Santiago, Chile. I'm currently a
+        student at Universidad de los Andes, about halfway through my degree.
+      </p>
+
+      <figure>
+        <img src="images/VideoCapture_20260811-204242.jpg" alt="Agustín Álvarez playing football" width="500" height="500">
+        <figcaption>Agustín playing some pickup football.</figcaption>
+      </figure>
+    </section>
+
+    <section id="skills">
+      <span class="eyebrow" aria-hidden="true">// skills</span>
+      <h2>Skills</h2>
+      <table>
+        <caption>Skills and how I picked them up</caption>
+        <thead>
+          <tr>
+            <th scope="col">Skill</th>
+            <th scope="col">How &amp; why I acquired it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">English (fluent)</th>
+            <td>Formally, english was a part of my education since daycare. I was lucky enough to be enrolled in a bilingual daycare, followed by a
+              member of the Association of British Schools in Chile (ABSCH). Those courses then enabled me to be able to consume content via movies
+              and Youtube in english, which helped with the familiarization and eventual full adoption of the language.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Programming</th>
+            <td>Programming as a whole started in my final year of high school, where I opted to take a tech class over the alternatives. I was part of a small
+              group of 4 classmates during that year, but that was my first introduction to the concept in a more technical and practical sense.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Python</th>
+            <td>I learned Python through the various projects and courses required by the university.</td>
+          </tr>
+          <tr>
+            <th scope="row">SQL</th>
+            <td>I learned SQL via passing the Databases course.</td>
+          </tr>
+          <tr>
+            <th scope="row">C / C++</th>
+            <td>C and C++ were learned through the Low Level Programming course at college.</td>
+          </tr>
+          <tr>
+            <th scope="row">Teamwork skills</th>
+            <td>Among my hobbies I include both gaming and casual football games. Through both, I've learned to work alongside a team to maximize strengths and
+              develop strategies that best suit the current conditions for a common goal.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="projects">
+      <span class="eyebrow" aria-hidden="true">// projects</span>
+      <h2>Projects</h2>
+
+      <article>
+        <h3>App Prototype — Association of British Schools in Chile (ABSCH)</h3>
+        <p>The event consisted of travel of various students from multiple schools gathering for an event. This event consisted of the development of an app
+          that would incentivize "green" behaviours (recycling, reusing, etc). In groups of 3, we came up with and then presented the project to the rest of the
+          participants in english.
+        </p>
+        <p>Throughout this experience, I learned to know how to do the role assigned to me while helping others with theirs, as well as teamwork alongside
+          people I'd only just met.
+        </p>
+      </article>
+
+      <article>
+        <h3>Technical Translation for TUSAN</h3>
+        <p>In <time datetime="2022">2022</time>, State Grid Corporation of China (SGCC) aquired CGE (AKA General Electric Company). Under this new management,
+        naturally, issues arose regarding communication. One of these was the translation of documents regarding processes and guidelines for how certain
+      procedures should and should not be done. My father, a now former employee under CGE, tasked me with translating the work under his supervision. </p>
+        <p>The total of the documents to translate was about 150 pages. I used the automatic translation tool provided by Microsoft Word, but mistakes could
+          arise from the use of such a tool. So, I had to read through both versions of the document at once, and translate live in my head what was being said
+          and correct any mistakes in the translated english document. This was before AI was available in its current form, and so any words I didn't 
+          understand I had to research, compare, and confirm with my father as to their applicability. In the end, though, the translation was good.
+        </p>
+      </article>
+
+    </section>
+
+    <section id="contact">
+      <span class="eyebrow" aria-hidden="true">// contact</span>
+      <h2>Contact</h2>
+      <form>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <address>
+      <p>Find me on GitHub: <a href="https://github.com/Aasb-2" target="_blank" rel="noopener noreferrer">github.com/Aasb-2</a></p>
+      <p>This page's source code: <a href="https://github.com/Aasb-2/webtech-lab-01" target="_blank" rel="noopener noreferrer">webtech-lab-01 repository</a></p>
+      <p>My university: <a href="https://www.uandes.cl" target="_blank" rel="noopener noreferrer">Universidad de los Andes</a></p>
+    </address>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,2 +1,3 @@
 # webtech-lab-01
-lab 1 for web technologies
+Agustín Álvarez Salazar
+https://aasb-2.github.io/webtech-lab-01/
