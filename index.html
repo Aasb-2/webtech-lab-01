@@ -27,6 +27,9 @@
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
+      <button id="theme-toggle" type="button" class="theme-toggle" aria-pressed="false">
+  Dark mode: Off
+</button>
     </nav>
   </div>
 </header>
@@ -122,26 +125,70 @@
       </article>
 
     </section>
+<section id="collection">
+  <span class="eyebrow" aria-hidden="true">// collection</span>
+  <h2>Collection</h2>
+
+  <div class="collection-controls">
+    <div>
+      <label for="collection-search">Search</label>
+      <input type="text" id="collection-search" placeholder="Search items…">
+    </div>
+    <div id="collection-categories" class="category-buttons" role="group" aria-label="Filter by category"></div>
+  </div>
+
+  <p id="collection-empty" class="collection-empty" hidden>No items match your filter.</p>
+
+  <ul id="collection-list" class="collection-list"></ul>
+</section>
+    <section id="collection">
+  <span class="eyebrow" aria-hidden="true">// collection</span>
+  <h2>Collection</h2>
+  <ul id="collection-list" class="collection-list"></ul>
+</section>
+
+<div class="add-item">
+  <h3>Add an item</h3>
+  <form id="add-item-form">
+    <div>
+      <label for="new-title">Title</label>
+      <input type="text" id="new-title" name="title">
+    </div>
+    <div>
+      <label for="new-category">Category</label>
+      <input type="text" id="new-category" name="category">
+    </div>
+    <div>
+      <label for="new-description">Description</label>
+      <textarea id="new-description" name="description" rows="3"></textarea>
+    </div>
+    <button type="submit">Add item</button>
+  </form>
+</div>
 
     <section id="contact">
-      <span class="eyebrow" aria-hidden="true">// contact</span>
-      <h2>Contact</h2>
-      <form>
-        <div>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" autocomplete="name" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="email" required>
-        </div>
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+  <span class="eyebrow" aria-hidden="true">// contact</span>
+  <h2>Contact</h2>
+  <form id="contact-form" novalidate>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error">
+      <p class="field-error" id="name-error"></p>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error">
+      <p class="field-error" id="email-error"></p>
+    </div>
+    <div>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" aria-describedby="message-error"></textarea>
+      <p class="field-error" id="message-error"></p>
+    </div>
+    <button type="submit">Send Message</button>
+    <p id="contact-success" class="form-success" role="status" hidden>Thanks — your message has been sent.</p>
+  </form>
+</section>
 
   </main>
 
@@ -155,5 +202,7 @@
   </div>
 </footer>
 
+
+<script src="script.js"></script>
 </body>
 </html>

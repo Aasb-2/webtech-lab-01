@@ -18,6 +18,33 @@
   --max-width: 1200px;
 }
 
+:root.dark-theme {
+  --bg: #14171A;
+  --surface: #1C2024;
+  --border: #2C3136;
+  --text: #F1F3F5;
+  --text-muted: #A6ADB4;
+  --accent: #4CAF7D;
+  --accent-soft: #1F3229;
+}
+
+.theme-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.75rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ============================================
    Reset & base
    ============================================ */
