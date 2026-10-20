@@ -1,3 +1,5 @@
+const WHEELHOUSE_API_URL = "http://localhost:3000/api/v1";
+
 const collectionItems = [
   { id: 1, title: "Item 1", category: "category 1", description: "Description for Item 1." },
   { id: 2, title: "Item 2", category: "category 2", description: "Description for Item 2." },
@@ -188,3 +190,139 @@ themeToggle.addEventListener("click", () => {
   themeToggle.setAttribute("aria-pressed", String(isDark));
   themeToggle.textContent = isDark ? "Dark mode: On" : "Dark mode: Off";
 });
+
+// Step 10 (Lab 10): Wheelhouse price list
+const wheelhouseStatus = document.querySelector("#wheelhouse-status");
+const wheelhouseTable = document.querySelector("#wheelhouse-table");
+const wheelhouseTableBody = document.querySelector("#wheelhouse-table-body");
+const wheelhouseLookupInput = document.querySelector("#wheelhouse-lookup-id");
+const wheelhouseLookupButton = document.querySelector("#wheelhouse-lookup-button");
+const wheelhouseLookupResult = document.querySelector("#wheelhouse-lookup-result");
+
+function setWheelhouseStatus(message) {
+  wheelhouseStatus.textContent = message;
+}
+
+function formatWheelhousePrice(price) {
+  const amount = Number(price);
+  return Number.isFinite(amount) ? `$${amount.toFixed(2)}` : price;
+}
+
+function renderWheelhouseTable(services) {
+  wheelhouseTableBody.replaceChildren();
+
+  services.forEach((service) => {
+    const row = document.createElement("tr");
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = service.name;
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = formatWheelhousePrice(service.price);
+
+    const countCell = document.createElement("td");
+    countCell.textContent = String(service.repairs_charged_count);
+
+    row.append(nameCell, priceCell, countCell);
+    wheelhouseTableBody.appendChild(row);
+  });
+
+  wheelhouseTable.hidden = services.length === 0;
+}
+
+async function loadWheelhouseServices() {
+  setWheelhouseStatus("Loading prices…");
+  wheelhouseTable.hidden = true;
+
+  let response;
+  try {
+    response = await fetch(`${WHEELHOUSE_API_URL}/services`);
+  } catch (networkError) {
+    setWheelhouseStatus("The price list couldn't be reached. Is the Wheelhouse server running?");
+    return;
+  }
+
+  let payload;
+  try {
+    payload = await response.json();
+  } catch (parseError) {
+    setWheelhouseStatus("The price list couldn't be reached. Is the Wheelhouse server running?");
+    return;
+  }
+
+  if (!response.ok) {
+    const messages = Array.isArray(payload.errors) ? payload.errors.join(" ") : "Something went wrong.";
+    setWheelhouseStatus(messages);
+    return;
+  }
+
+  setWheelhouseStatus(`${payload.length} service${payload.length === 1 ? "" : "s"} loaded.`);
+  renderWheelhouseTable(payload);
+}
+
+function renderWheelhouseLookupResult(service) {
+  wheelhouseLookupResult.replaceChildren();
+
+  const dl = document.createElement("dl");
+
+  [
+    ["Id", String(service.id)],
+    ["Name", service.name],
+    ["Price", formatWheelhousePrice(service.price)],
+    ["Repairs charged", String(service.repairs_charged_count)],
+  ].forEach(([label, value]) => {
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    dl.append(dt, dd);
+  });
+
+  wheelhouseLookupResult.appendChild(dl);
+}
+
+async function lookupWheelhouseService() {
+  const id = wheelhouseLookupInput.value.trim();
+  wheelhouseLookupResult.replaceChildren();
+
+  if (id === "") {
+    wheelhouseLookupResult.textContent = "Enter a service id first.";
+    return;
+  }
+
+  wheelhouseLookupResult.textContent = "Looking up…";
+
+  let response;
+  try {
+    response = await fetch(`${WHEELHOUSE_API_URL}/services/${encodeURIComponent(id)}`);
+  } catch (networkError) {
+    wheelhouseLookupResult.textContent = "The price list couldn't be reached. Is the Wheelhouse server running?";
+    return;
+  }
+
+  let payload;
+  try {
+    payload = await response.json();
+  } catch (parseError) {
+    wheelhouseLookupResult.textContent = "The price list couldn't be reached. Is the Wheelhouse server running?";
+    return;
+  }
+
+  if (!response.ok) {
+    const messages = Array.isArray(payload.errors) ? payload.errors.join(" ") : "Something went wrong.";
+    wheelhouseLookupResult.textContent = messages;
+    return;
+  }
+
+  renderWheelhouseLookupResult(payload);
+}
+
+wheelhouseLookupButton.addEventListener("click", lookupWheelhouseService);
+wheelhouseLookupInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    lookupWheelhouseService();
+  }
+});
+
+loadWheelhouseServices();

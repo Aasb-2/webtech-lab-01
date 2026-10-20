@@ -125,6 +125,36 @@
       </article>
 
     </section>
+
+<section id="wheelhouse">
+  <span class="eyebrow" aria-hidden="true">// wheelhouse</span>
+  <h2>Wheelhouse Price List</h2>
+  <p>Live service prices pulled from the Wheelhouse bike repair shop API.</p>
+
+  <p id="wheelhouse-status" class="wheelhouse-status" role="status"></p>
+
+  <table id="wheelhouse-table" class="wheelhouse-table" hidden>
+    <caption>Current service prices</caption>
+    <thead>
+      <tr>
+        <th scope="col">Service</th>
+        <th scope="col">Price</th>
+        <th scope="col">Repairs charged</th>
+      </tr>
+    </thead>
+    <tbody id="wheelhouse-table-body"></tbody>
+  </table>
+
+  <div class="wheelhouse-lookup">
+    <label for="wheelhouse-lookup-id">Look up a service by id</label>
+    <div class="wheelhouse-lookup-row">
+      <input type="text" id="wheelhouse-lookup-id" inputmode="numeric" placeholder="e.g. 7">
+      <button type="button" id="wheelhouse-lookup-button">Look up</button>
+    </div>
+    <div id="wheelhouse-lookup-result" class="wheelhouse-lookup-result"></div>
+  </div>
+</section>
+
 <section id="collection">
   <span class="eyebrow" aria-hidden="true">// collection</span>
   <h2>Collection</h2>
@@ -139,11 +169,6 @@
 
   <p id="collection-empty" class="collection-empty" hidden>No items match your filter.</p>
 
-  <ul id="collection-list" class="collection-list"></ul>
-</section>
-    <section id="collection">
-  <span class="eyebrow" aria-hidden="true">// collection</span>
-  <h2>Collection</h2>
   <ul id="collection-list" class="collection-list"></ul>
 </section>
 

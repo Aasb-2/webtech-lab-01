@@ -373,3 +373,66 @@ textarea:focus-visible {
     animation: none !important;
   }
 }
+
+/* ============================================
+   Wheelhouse price list (Lab 10)
+   ============================================ */
+.wheelhouse-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.wheelhouse-table {
+  margin-top: 1rem;
+}
+
+.wheelhouse-lookup {
+  margin-top: 1.5rem;
+  max-width: 420px;
+}
+
+.wheelhouse-lookup-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.wheelhouse-lookup-row input {
+  flex: 1;
+}
+
+.wheelhouse-lookup-row button {
+  font-family: var(--font-mono);
+  background: var(--accent);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.65rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.wheelhouse-lookup-row button:hover {
+  background: #245A41;
+}
+
+.wheelhouse-lookup-result {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.wheelhouse-lookup-result dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.75rem;
+  margin: 0;
+}
+
+.wheelhouse-lookup-result dt {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.wheelhouse-lookup-result dd {
+  margin: 0;
+}
